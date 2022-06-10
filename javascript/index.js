@@ -70,7 +70,7 @@ function renderItemUI(movieInfo) {
       </figure>
       <h1 >${item.name}</h1>
       </section>
-      <p>${item.date}<span></span></p>
+      <p>${item.date}<span class="likeBtn" id="${item.id}"></span></p>
       </li>`,
   );
   items.innerHTML = ItemUI.join('');
@@ -177,7 +177,7 @@ function headerUI(headerData) {
 }
 
 function renderErrorUI() {
-  let errorItemUI = `<h2>暫無搜尋結果</h2>`;
+  let errorItemUI = `<h3>NO SEARCH RESULTS</h3>`;
   let errorHeaderUI = `<ul class="header__number">
   <li>
     <p>INDEX</p>

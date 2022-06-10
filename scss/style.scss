@@ -168,6 +168,7 @@ $aside-time: 0.3s;
       width: 90%;
       padding: 0 3%;
       h2 {
+        text-align: center;
         @include font(3em, 1.5, 100, 0, 0);
       }
       .title {
@@ -234,9 +235,14 @@ $aside-time: 0.3s;
       width: 0;
     }
     h2 {
-      width: 100%;
       text-align: center;
       @include font(1.2em, 2em, 200, 6px, 0);
+      opacity: 0.4;
+    }
+    h3 {
+      width: 100%;
+      text-align: center;
+      @include font(1em, 2em, 200, 6px, 0);
       opacity: 0.4;
     }
     &__items {
@@ -293,6 +299,7 @@ $aside-time: 0.3s;
       }
     }
   }
+
   .footer {
     transition: all 1s;
     @include absolute-lb(0, 0);

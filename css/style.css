@@ -414,6 +414,7 @@ a {
   padding: 0 3%;
 }
 .main .header__title h2 {
+  text-align: center;
   font-size: 3em;
   line-height: 1.5;
   font-weight: 100;
@@ -504,9 +505,18 @@ a {
   width: 0;
 }
 .main .aside h2 {
-  width: 100%;
   text-align: center;
   font-size: 1.2em;
+  line-height: 2em;
+  font-weight: 200;
+  letter-spacing: 6px;
+  margin: 0;
+  opacity: 0.4;
+}
+.main .aside h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
   line-height: 2em;
   font-weight: 200;
   letter-spacing: 6px;
