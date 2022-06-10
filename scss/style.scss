@@ -1,0 +1,297 @@
+@import 'reset';
+@import 'tools';
+@import 'animation';
+@import 'RWD';
+
+$aside-time: 0.3s;
+
+* {
+  position: relative;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Noto Sans', sans-serif;
+  color: aliceblue;
+}
+
+.container {
+  width: 100%;
+}
+
+.theme--bgc {
+  @include size(100%, 100vh);
+  @include fixed-lt(0, 0);
+  z-index: -1;
+  @include bg-cover;
+  background-image: url('../images/bgc-none-2.png');
+  overflow: hidden;
+
+  .mask {
+    @include absolute-lt(0, 0);
+    @include size(100%, 100vh);
+    background-color: #000;
+    opacity: 0.7;
+    z-index: 3;
+  }
+  .theme__imgBox {
+    @include absolute-lt(0, 0);
+    @include size(100%, 100vh);
+    z-index: 2;
+    .img-theme {
+      width: 100%;
+      object-fit: cover;
+      transition: all 1.6s;
+    }
+  }
+}
+
+.main {
+  width: 100%;
+  @include flex-row-center;
+  .wrapper {
+    transition: all $aside-time;
+    overflow: auto;
+    &__btn {
+      width: 10%;
+      @include absolute-rt(0, 58%);
+      z-index: 60;
+      transform: translateY(-50%);
+      @include flex-col-center;
+      span {
+        @include size(1px, 2em);
+        display: block;
+        border-left: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        opacity: 0.7;
+        &:nth-child(2) {
+          opacity: 1;
+          @include size(1.5em, 1.5em);
+          margin: 1em 0;
+          border-radius: 2em;
+          cursor: pointer;
+          transition: all 0.4s;
+          &:hover {
+            background-color: #ccc;
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+    .navbar {
+      @include absolute-lt(0, 0);
+      z-index: 50;
+      width: 100%;
+      padding: 1em 0 1em 5em;
+      ul {
+        @include flex-row-start;
+        li {
+          flex: 1;
+        }
+        .logo {
+          a {
+            color: #ccc;
+            @include font(1.5em, 2em, 600, 3px, 2em 0);
+            span {
+              font-size: 0.7em;
+              font-weight: 100;
+              margin-left: 4px;
+            }
+          }
+        }
+        .search {
+          @include flex-row-center;
+          &__input {
+            @include size(60%, 2em);
+            border-radius: 2em;
+            background-color: transparent;
+            padding: 0 2em;
+            @include font(1em, 1.3, 400, 1px, 0);
+            border: 1px solid #ccc;
+          }
+          &__submit {
+            display: inline-block;
+            @include size(1.5em, 1.5em);
+            margin-left: 1em;
+            @include bg-contain;
+            background-image: url('../images/search.png');
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .header {
+      @include flex-row-between;
+      height: 100vh;
+      padding-top: 15vh;
+      text-shadow: 2px 2px 5px #333;
+      &__number {
+        @include flex-col-between;
+        width: 10%;
+        li {
+          flex: 1;
+          white-space: nowrap;
+          @include font(0.5em, 1em, 100, 3px, 1em 0);
+          &:nth-child(1) {
+            @include flex-col-center;
+            p {
+              transform: rotate(-90deg) translateX(50%);
+            }
+            span {
+              display: inline-block;
+              @include size(3em, 0.5px);
+              background-color: #ccc;
+              margin-top: 4em;
+              transform: rotate(-90deg) translateX(50%);
+            }
+          }
+          &:nth-child(2) {
+            font-size: 1.5em;
+            padding-left: 3px;
+            text-align: center;
+          }
+          &:nth-child(3) {
+            @include flex-col-center;
+            p {
+              transform: rotate(-90deg) translateX(-50%);
+            }
+            span {
+              display: inline-block;
+              @include size(3em, 0.5px);
+              background-color: #ccc;
+              margin-bottom: 4em;
+              transform: rotate(-90deg) translateX(-50%);
+            }
+          }
+        }
+      }
+      &__title {
+        width: 90%;
+        padding: 0 3%;
+        h2 {
+          @include font(3em, 1.5, 100, 0, 0);
+        }
+        .title {
+          width: 90%;
+          @include font(3em, 1.5, 400, 0, 0);
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2; /*省略第n行後的文字*/
+          -webkit-box-orient: vertical; /*設定元素是垂直布局*/
+        }
+        .info {
+          @include flex-row-between;
+          margin-top: 2em;
+          &__data {
+            .date {
+              @include font(0.8em, 1.5, 100, 2px, 0);
+            }
+            .average {
+              @include font(0.7em, 1.5, 100, 2px, 2em 0 0 0);
+            }
+          }
+          &__btn {
+            button {
+              background-color: transparent;
+              border: 1px solid #ccc;
+              height: 2em;
+              padding: 0 1em;
+              @include font(0.9em, 1.8, 200, 1px, 0 0 0 1em);
+              border-radius: 2.5em;
+              transition: all 0.6s;
+              cursor: pointer;
+              &:hover {
+                background-color: #ccc;
+                color: #333;
+              }
+            }
+          }
+        }
+        .description {
+          width: 100%;
+          max-height: 28vh;
+          padding-right: 1em;
+          @include font(0.9em, 2em, 100, 1px, 2em 0 0 0);
+          overflow: auto;
+          &::-webkit-scrollbar {
+            width: 2px;
+            background-color: transparent;
+          }
+          &::-webkit-scrollbar-thumb {
+            position: relative;
+            background: #ccc;
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+  }
+
+  .aside {
+    transition: all $aside-time;
+    height: 100vh;
+    @include blur(120%, 10px);
+    overflow: auto;
+    padding-top: 1em;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+    h2 {
+      width: 100%;
+      text-align: center;
+      @include font(1.2em, 2em, 200, 6px, 0);
+      opacity: 0.4;
+    }
+    &__items {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .item {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        width: 50%;
+        margin: 1em 0;
+        padding: 0 1em;
+        &__btn {
+          width: 100%;
+          button {
+            @include absolute-lt(0, 0);
+            z-index: 50;
+            @include size(100%, 100%);
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+          }
+          figure {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background-color: rgba($color: #000000, $alpha: 0.5);
+            overflow: hidden;
+            img {
+              width: 100%;
+              object-fit: contain;
+            }
+          }
+          h1 {
+            @include font(1em, 1.8, 400, 1px, 1em 0 0 0);
+            cursor: pointer;
+            text-align: left;
+          }
+        }
+        p {
+          @include font(0.8em, 3em, 100, 1px, 1em 0 0 0);
+          span {
+            @include absolute-rb(0.5em, 0);
+            @include size(3em, 3em);
+            @include bg-contain;
+            background-image: url('../images/plus.png');
+            cursor: pointer;
+            transition: all 0.6s;
+            &:hover {
+              transform: rotate(10deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}
