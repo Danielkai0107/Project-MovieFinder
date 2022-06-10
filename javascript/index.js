@@ -16,6 +16,7 @@ submit.addEventListener('click', () => {
   let search = inputData.value;
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${myKey}&query=${search}`;
   const imageUrl = 'https://image.tmdb.org/t/p/original';
+  asideBlock.scrollTo(0, 0);
 
   async function getMovieApi() {
     try {
@@ -146,8 +147,10 @@ function renderErrorUI() {
   <h2>Sorry...Please search again</h2>
 </section>
 <ul class="header__number"></ul>`;
+  let errorBgcUI = ``;
   items.innerHTML = errorItemUI;
   header.innerHTML = errorHeaderUI;
+  themeBgc.innerHTML = errorBgcUI;
 }
 
 //aside 開關設定
