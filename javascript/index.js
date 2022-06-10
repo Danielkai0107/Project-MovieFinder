@@ -80,17 +80,14 @@ function renderItemUI(movieInfo) {
 function clickHeaderData(movieInfo) {
   const item = document.querySelectorAll('.item button');
   let headerData = [movieInfo[0]];
-  if (headerData[0].number == 1) {
-    prev.classList.add('hidden');
-  }
+  footerBtn(headerData);
   //item
   item.forEach((element) => {
     element.addEventListener('click', (e) => {
       e.preventDefault();
       headerData = movieInfo.filter((item) => item.id == e.target.id);
-      headerData[0].number !== 1 && prev.classList.remove('hidden');
-      headerData[0].number !== 20 && next.classList.remove('hidden');
       //執行 header 渲染
+      footerBtn(headerData);
       headerUI(headerData);
     });
   });
@@ -99,14 +96,13 @@ function clickHeaderData(movieInfo) {
     e.preventDefault();
     headerData = movieInfo.filter((item) => {
       if (headerData[0].number - 1 <= 1) {
-        prev.classList.add('hidden');
         return item.number == 1;
       } else {
         return item.number == headerData[0].number - 1;
       }
     });
-    headerData[0].number !== 20 && next.classList.remove('hidden');
     //執行 header 渲染
+    footerBtn(headerData);
     headerUI(headerData);
   });
   //next
@@ -114,16 +110,25 @@ function clickHeaderData(movieInfo) {
     e.preventDefault();
     headerData = movieInfo.filter((item) => {
       if (headerData[0].number + 1 >= 20) {
-        next.classList.add('hidden');
         return item.number == 20;
       } else {
         return item.number == headerData[0].number + 1;
       }
     });
-    headerData[0].number !== 1 && prev.classList.remove('hidden');
     //執行 header 渲染
+    footerBtn(headerData);
     headerUI(headerData);
   });
+}
+
+//上一頁 & 下一頁 判斷
+function footerBtn(headerData) {
+  headerData[0].number == 1
+    ? prev.classList.add('hidden')
+    : prev.classList.remove('hidden');
+  headerData[0].number == 20
+    ? next.classList.add('hidden')
+    : next.classList.remove('hidden');
 }
 
 // header 渲染函式
