@@ -179,6 +179,7 @@ $aside-time: 0.3s;
         }
         .info {
           @include flex-row-between;
+          flex-wrap: wrap;
           margin-top: 2em;
           &__data {
             .date {
