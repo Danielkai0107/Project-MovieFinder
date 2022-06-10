@@ -10,6 +10,9 @@ const openBtn = document.querySelector('.wrapper__btn--open');
 const items = document.querySelector('.aside__items');
 const header = document.querySelector('.header');
 const themeBgc = document.querySelector('.theme__imgBox');
+const prev = document.querySelector('.footer__prev');
+const next = document.querySelector('.footer__next');
+const footer = document.querySelector('.footer');
 
 //search and get API
 submit.addEventListener('click', () => {
@@ -17,6 +20,7 @@ submit.addEventListener('click', () => {
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${myKey}&query=${search}`;
   const imageUrl = 'https://image.tmdb.org/t/p/original';
   asideBlock.scrollTo(0, 0);
+  footer.classList.contains('hidden') && footer.classList.remove('hidden');
 
   async function getMovieApi() {
     try {
@@ -75,13 +79,50 @@ function renderItemUI(movieInfo) {
 //取得 header 渲染所需資料
 function clickHeaderData(movieInfo) {
   const item = document.querySelectorAll('.item button');
+  let headerData = [movieInfo[0]];
+  if (headerData[0].number == 1) {
+    prev.classList.add('hidden');
+  }
+  //item
   item.forEach((element) => {
     element.addEventListener('click', (e) => {
       e.preventDefault();
-      let headerData = movieInfo.filter((item) => item.id == e.target.id);
+      headerData = movieInfo.filter((item) => item.id == e.target.id);
+      headerData[0].number !== 1 && prev.classList.remove('hidden');
+      headerData[0].number !== 20 && next.classList.remove('hidden');
       //執行 header 渲染
       headerUI(headerData);
     });
+  });
+  //prev
+  prev.addEventListener('click', (e) => {
+    e.preventDefault();
+    headerData = movieInfo.filter((item) => {
+      if (headerData[0].number - 1 <= 1) {
+        prev.classList.add('hidden');
+        return item.number == 1;
+      } else {
+        return item.number == headerData[0].number - 1;
+      }
+    });
+    headerData[0].number !== 20 && next.classList.remove('hidden');
+    //執行 header 渲染
+    headerUI(headerData);
+  });
+  //next
+  next.addEventListener('click', (e) => {
+    e.preventDefault();
+    headerData = movieInfo.filter((item) => {
+      if (headerData[0].number + 1 >= 20) {
+        next.classList.add('hidden');
+        return item.number == 20;
+      } else {
+        return item.number == headerData[0].number + 1;
+      }
+    });
+    headerData[0].number !== 1 && prev.classList.remove('hidden');
+    //執行 header 渲染
+    headerUI(headerData);
   });
 }
 

@@ -180,6 +180,11 @@ a {
   flex: 7;
 }
 
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
 @media all and (max-width: 966px) {
   html {
     font-size: 12px;
@@ -283,7 +288,7 @@ a {
   background-color: #ccc;
   opacity: 0.7;
 }
-.main .wrapper .navbar {
+.main .navbar {
   position: absolute;
   left: 0;
   top: 0;
@@ -291,15 +296,15 @@ a {
   width: 100%;
   padding: 1em 0 1em 5em;
 }
-.main .wrapper .navbar ul {
+.main .navbar ul {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.main .wrapper .navbar ul li {
+.main .navbar ul li {
   flex: 1;
 }
-.main .wrapper .navbar ul .logo a {
+.main .navbar ul .logo a {
   color: #ccc;
   font-size: 1.5em;
   line-height: 2em;
@@ -307,17 +312,17 @@ a {
   letter-spacing: 3px;
   margin: 2em 0;
 }
-.main .wrapper .navbar ul .logo a span {
+.main .navbar ul .logo a span {
   font-size: 0.7em;
   font-weight: 100;
   margin-left: 4px;
 }
-.main .wrapper .navbar ul .search {
+.main .navbar ul .search {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.main .wrapper .navbar ul .search__input {
+.main .navbar ul .search__input {
   width: 60%;
   height: 2em;
   border-radius: 2em;
@@ -330,7 +335,7 @@ a {
   margin: 0;
   border: 1px solid #ccc;
 }
-.main .wrapper .navbar ul .search__submit {
+.main .navbar ul .search__submit {
   display: inline-block;
   width: 1.5em;
   height: 1.5em;
@@ -341,7 +346,7 @@ a {
   background-image: url("../images/search.png");
   cursor: pointer;
 }
-.main .wrapper .header {
+.main .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -349,14 +354,14 @@ a {
   padding-top: 15vh;
   text-shadow: 2px 2px 5px #333;
 }
-.main .wrapper .header__number {
+.main .header__number {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
   align-items: center;
   width: 10%;
 }
-.main .wrapper .header__number li {
+.main .header__number li {
   flex: 1;
   white-space: nowrap;
   font-size: 0.5em;
@@ -365,16 +370,16 @@ a {
   letter-spacing: 3px;
   margin: 1em 0;
 }
-.main .wrapper .header__number li:nth-child(1) {
+.main .header__number li:nth-child(1) {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
 }
-.main .wrapper .header__number li:nth-child(1) p {
+.main .header__number li:nth-child(1) p {
   transform: rotate(-90deg) translateX(50%);
 }
-.main .wrapper .header__number li:nth-child(1) span {
+.main .header__number li:nth-child(1) span {
   display: inline-block;
   width: 3em;
   height: 0.5px;
@@ -382,21 +387,21 @@ a {
   margin-top: 4em;
   transform: rotate(-90deg) translateX(50%);
 }
-.main .wrapper .header__number li:nth-child(2) {
+.main .header__number li:nth-child(2) {
   font-size: 1.5em;
   padding-left: 3px;
   text-align: center;
 }
-.main .wrapper .header__number li:nth-child(3) {
+.main .header__number li:nth-child(3) {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
 }
-.main .wrapper .header__number li:nth-child(3) p {
+.main .header__number li:nth-child(3) p {
   transform: rotate(-90deg) translateX(-50%);
 }
-.main .wrapper .header__number li:nth-child(3) span {
+.main .header__number li:nth-child(3) span {
   display: inline-block;
   width: 3em;
   height: 0.5px;
@@ -404,18 +409,18 @@ a {
   margin-bottom: 4em;
   transform: rotate(-90deg) translateX(-50%);
 }
-.main .wrapper .header__title {
+.main .header__title {
   width: 90%;
   padding: 0 3%;
 }
-.main .wrapper .header__title h2 {
+.main .header__title h2 {
   font-size: 3em;
   line-height: 1.5;
   font-weight: 100;
   letter-spacing: 0;
   margin: 0;
 }
-.main .wrapper .header__title .title {
+.main .header__title .title {
   width: 90%;
   font-size: 3em;
   line-height: 1.5;
@@ -429,27 +434,27 @@ a {
   -webkit-box-orient: vertical;
   /*設定元素是垂直布局*/
 }
-.main .wrapper .header__title .info {
+.main .header__title .info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 2em;
 }
-.main .wrapper .header__title .info__data .date {
+.main .header__title .info__data .date {
   font-size: 0.8em;
   line-height: 1.5;
   font-weight: 100;
   letter-spacing: 2px;
   margin: 0;
 }
-.main .wrapper .header__title .info__data .average {
+.main .header__title .info__data .average {
   font-size: 0.7em;
   line-height: 1.5;
   font-weight: 100;
   letter-spacing: 2px;
   margin: 2em 0 0 0;
 }
-.main .wrapper .header__title .info__btn button {
+.main .header__title .info__btn button {
   background-color: transparent;
   border: 1px solid #ccc;
   height: 2em;
@@ -463,11 +468,11 @@ a {
   transition: all 0.6s;
   cursor: pointer;
 }
-.main .wrapper .header__title .info__btn button:hover {
+.main .header__title .info__btn button:hover {
   background-color: #ccc;
   color: #333;
 }
-.main .wrapper .header__title .description {
+.main .header__title .description {
   width: 100%;
   max-height: 28vh;
   padding-right: 1em;
@@ -478,11 +483,11 @@ a {
   margin: 2em 0 0 0;
   overflow: auto;
 }
-.main .wrapper .header__title .description::-webkit-scrollbar {
+.main .header__title .description::-webkit-scrollbar {
   width: 2px;
   background-color: transparent;
 }
-.main .wrapper .header__title .description::-webkit-scrollbar-thumb {
+.main .header__title .description::-webkit-scrollbar-thumb {
   position: relative;
   background: #ccc;
   border-radius: 2px;
@@ -577,4 +582,24 @@ a {
 }
 .main .aside__items .item p span:hover {
   transform: rotate(10deg);
+}
+.main .footer {
+  transition: all 1s;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .footer span {
+  display: inline-block;
+  font-size: 1em;
+  line-height: 3em;
+  font-weight: 100;
+  letter-spacing: 3px;
+  margin: 0;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
