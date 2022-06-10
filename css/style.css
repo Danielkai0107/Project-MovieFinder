@@ -598,8 +598,11 @@ a {
   display: inline-block;
   font-size: 1em;
   line-height: 3em;
-  font-weight: 100;
+  font-weight: 200;
   letter-spacing: 3px;
   margin: 0;
   cursor: pointer;
+}
+.main .footer span:active {
+  transform: scale(0.9);
 }/*# sourceMappingURL=style.css.map */

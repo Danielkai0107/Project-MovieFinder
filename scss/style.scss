@@ -301,8 +301,11 @@ $aside-time: 0.3s;
     @include flex-row-between;
     span {
       display: inline-block;
-      @include font(1em, 3em, 100, 3px, 0);
+      @include font(1em, 3em, 200, 3px, 0);
       cursor: pointer;
+      &:active {
+        transform: scale(0.9);
+      }
     }
   }
 }
